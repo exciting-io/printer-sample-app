@@ -1,5 +1,9 @@
 /* You can put your styles in here if you like... */
 
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 .error {
   color: #f00;
 }
