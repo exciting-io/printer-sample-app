@@ -32,6 +32,36 @@ parameter set to a unique job URL in this app.
 The printer backend server takes this page and rasterises it for the
 destination printer to download.
 
+
+Deploying to Heroku
+-------------------
+
+First, create the heroku app:
+
+    heroku apps:create <app name>
+
+Then, we'll need a few addons
+
+    heroku addons:add heroku-postgresql
+    heroku addons:add scheduler:standard
+
+Next, set up the scheduler
+
+    heroku addons:open scheduler
+
+You'll want to add a `rake run` task to run probably once a day, whenever
+is appropriate to send the data to the printer(s).
+
+Finally, deploy the actual application
+
+    git push heroku master
+
+Once everything starts running, you should be able to visit your application
+at the URL heroku reports (probably http://<app name>.herokuapp.com) and
+start registering printer(s).
+
+
+
 More information
 ----------------
 
