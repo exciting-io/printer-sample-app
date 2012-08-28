@@ -3,6 +3,7 @@ require "bundler/setup"
 require "sinatra"
 $LOAD_PATH.unshift File.dirname(__FILE__)
 require "registration"
+require "sudoku"
 
 get "/" do
   erb :index
@@ -24,7 +25,7 @@ post "/register" do
 end
 
 get "/content/:registration_id" do
-  registration = Registration.get(params[:registration_id])
-  # FIXME: here, do any processing to generate your contents
-  erb :content
+  @sudoku_number = rand(SUDOKU_STRINGS.length)
+  @sudoku = sudoku(@sudoku_number)
+  erb :sudoku
 end

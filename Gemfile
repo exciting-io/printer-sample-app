@@ -12,3 +12,5 @@ gem "dm-validations"
 
 # This will be used to run the periodic scheduling task
 gem "rake"
+
+gem "sass"

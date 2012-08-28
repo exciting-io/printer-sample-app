@@ -1,0 +1,19 @@
+<section class="sudoku">
+  <h1 class="hatched">Number Slave! #<%= @sudoku_number %></h1>
+  <table>
+    <colgroup span="3"></colgroup>
+    <colgroup span="3"></colgroup>
+    <colgroup span="3"></colgroup>
+    <% 3.times do |block| %>
+      <tbody>
+        <% 3.times do |row| %>
+          <tr>
+            <% 9.times do |cell| %>
+              <td><%= @sudoku[(9*cell)+(3*block)+row]%></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</section>
