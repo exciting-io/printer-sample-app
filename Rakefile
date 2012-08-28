@@ -8,7 +8,7 @@ task :run do
   require "uri"
   puts "Running..."
 
-  APP_URL = "http://your.server/" # FIXME: change this to the URL to your app
+  APP_URL = ENV["APP_URL"]
 
   Registration.each do |registration|
     puts "Processing job #{registration.id}: #{registration.print_url}"

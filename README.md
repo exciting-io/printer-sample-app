@@ -52,6 +52,12 @@ Next, set up the scheduler
 You'll want to add a `rake run` task to run probably once a day, whenever
 is appropriate to send the data to the printer(s).
 
+We need to set some configuration for the task. In this case, it's to tell
+the scheduler what the URL for our application is. Don't forget to change
+`<app name>` to whatever you chose above!
+
+    heroku config:set APP_URL="http://<app name>.herokuapp.com"
+
 Finally, deploy the actual application
 
     git push heroku master
