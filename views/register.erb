@@ -1,0 +1,18 @@
+<h1>Register your printer</h1>
+
+<p>This service will... <!-- explain your service here --></p>
+
+<% if @errors %>
+<div class="error"%>
+  <% @errors.each do |error| %>
+  <p><%= error.join(",") %></p>
+  <% end %>
+</div>
+<% end %>
+
+<form action="" method="post">
+  <label for="registration[print_url]">Printer URL:
+    <input type="text" name="registration[print_url]" value="<%= @registration.print_url %>" />
+  </label>
+  <input type="submit" value="Register" />
+</form>
