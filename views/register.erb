@@ -1,6 +1,6 @@
 <h1>Register your printer</h1>
 
-<p>This service will... <!-- explain your service here --></p>
+<p>This service will... <!-- FIXME: explain your service here --></p>
 
 <% if @errors %>
 <div class="error"%>
@@ -10,9 +10,8 @@
 </div>
 <% end %>
 
-<form action="" method="post">
-  <label for="registration[print_url]">Printer URL:
-    <input type="text" name="registration[print_url]" value="<%= @registration.print_url %>" />
-  </label>
-  <input type="submit" value="Register" />
+<form action="" method="post" id="registration">
+  <div><label for="registration[print_url]">Printer URL:</label></div>
+  <div><input type="text" id="registration_print_url" name="registration[print_url]" value="<%= @registration.print_url %>" /></div>
+  <div><button>Register</button></div>
 </form>

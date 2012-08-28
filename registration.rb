@@ -1,10 +1,11 @@
 require "data_mapper"
 
-# If you use postgres, you'll be able to deploy to Heroku easily.
+# If you use PostgreSQL, you'll be able to deploy to Heroku easily.
 # Otherwise, change this if you like.
 #
-# To create a local postgres database, run `createdb printer-sample-app`
-DataMapper::setup(:default, ENV['SHARED_DATABASE_URL'] || "postgres://localhost/printer-sample-app")
+# To create a local PostgreSQL database, run `createdb printer-sample-app`
+database_url = ENV['SHARED_DATABASE_URL'] || "postgres://localhost/printer-sample-app"
+DataMapper::setup(:default, database_url)
 
 class Registration
   include DataMapper::Resource
@@ -14,9 +15,13 @@ class Registration
              is_unique: "It looks like this printer is already registered."
            }
 
-  # Add any other attributes you might want to store, for
+  # FIXME: Add any other attributes you might want to store, for
   # example any usernames, email addresses, tokens or other
   # parameters that could influence the content posted to the printer
+  #
+  # For example, if you're printing something location-specific, you
+  # might want to ask the user for their location when they are signing up,
+  # and store it here against their print url.
 end
 
 # Perform basic sanity checks and initialize all relationships

@@ -25,6 +25,6 @@ end
 
 get "/content/:registration_id" do
   registration = Registration.get(params[:registration_id])
-
-  erb :weather
+  # FIXME: here, do any processing to generate your contents
+  erb :content
 end
