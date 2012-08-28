@@ -24,3 +24,26 @@ body {
 .error {
   color: #f00;
 }
+
+.tasks {
+  list-style: none;
+  padding-left: 0;
+  font-size: 26px;
+}
+
+.tasks tr {
+  height: 30px;
+}
+
+.tasks .box {
+  width: 26px;
+  height: 26px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 3px solid black;
+}
+
+.tasks .title {
+  padding-left: 10px;
+}

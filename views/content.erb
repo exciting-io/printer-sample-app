@@ -1,7 +1,10 @@
-<!-- FIXME:
-  This is the content which will be sent to the printer.
-  You should customise it to show your content in a nice, compact
-  and attractive way.
--->
-
-<h1>Hello from your printer!</h1>
+<h1>Tasks due:</h1>
+<% if @tasks.any? %>
+  <table class="tasks">
+    <% @tasks.each do |task| %>
+      <tr><td class="box"></td><td class="title"><%= task %></td></tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No tasks due! Well done; have a biscuit.</p>
+<% end %>

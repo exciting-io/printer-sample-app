@@ -7,6 +7,34 @@ require "data_mapper"
 database_url = ENV['DATABASE_URL'] || "postgres://localhost/printer-sample-app"
 DataMapper::setup(:default, database_url)
 
+class TokenPair
+  include DataMapper::Resource
+
+  belongs_to :registration
+
+  property :id, Serial
+  property :refresh_token, Text
+  property :access_token, Text
+  property :expires_in, Integer
+  property :issued_at, Integer
+
+  def update_token!(object)
+    self.refresh_token = object.refresh_token
+    self.access_token = object.access_token
+    self.expires_in = object.expires_in
+    self.issued_at = object.issued_at
+  end
+
+  def to_hash
+    {
+      :refresh_token => refresh_token,
+      :access_token => access_token,
+      :expires_in => expires_in,
+      :issued_at => Time.at(issued_at)
+    }
+  end
+end
+
 class Registration
   include DataMapper::Resource
   property :id, Serial
@@ -15,15 +43,10 @@ class Registration
              is_unique: "It looks like this printer is already registered."
            }
 
-  # FIXME: Add any other attributes you might want to store, for
-  # example any usernames, email addresses, tokens or other
-  # parameters that could influence the content posted to the printer
-  #
-  # For example, if you're printing something location-specific, you
-  # might want to ask the user for their location when they are signing up,
-  # and store it here against their print url.
+  has 1, :token_pair
 end
 
 # Perform basic sanity checks and initialize all relationships
 DataMapper.finalize
 Registration.auto_upgrade!
+TokenPair.auto_upgrade!
