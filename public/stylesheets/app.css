@@ -26,13 +26,8 @@ body {
 }
 
 .tasks {
-  list-style: none;
-  padding-left: 0;
   font-size: 26px;
-}
-
-.tasks tr {
-  height: 30px;
+  border-spacing: 10px 20px;
 }
 
 .tasks .box {
@@ -42,8 +37,4 @@ body {
   border-left: 2px solid black;
   border-right: 2px solid black;
   border-bottom: 3px solid black;
-}
-
-.tasks .title {
-  padding-left: 10px;
 }
