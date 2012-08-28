@@ -4,7 +4,7 @@ require "data_mapper"
 # Otherwise, change this if you like.
 #
 # To create a local PostgreSQL database, run `createdb printer-sample-app`
-database_url = ENV['SHARED_DATABASE_URL'] || "postgres://localhost/printer-sample-app"
+database_url = ENV['DATABASE_URL'] || "postgres://localhost/printer-sample-app"
 DataMapper::setup(:default, database_url)
 
 class Registration
